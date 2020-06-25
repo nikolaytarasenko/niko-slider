@@ -1,0 +1,23 @@
+.niko-slider {
+    padding: 0 40vw;
+}
+
+.niko-slider img {
+    max-width: 100%;
+    height: auto;
+}
+
+.niko-slider__container {
+    display: flex;
+    position: relative;
+}
+
+.niko-slider__slide {
+    position: absolute;
+    width: 100%;
+}
+
+.niko-slider__nav {
+    position: relative;
+    z-index: 1;
+}

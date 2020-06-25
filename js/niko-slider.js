@@ -20,16 +20,22 @@ class NikoSlider {
         const sliderWrapper = document.createElement('div');
         const sliderContainer = document.createElement('div');
         const sliderChildren = this.getDomSliderChildren();
-        const navigation = this.createSliderNav();
 
-        // добавляем каждому слайду свой класс
-        [...sliderChildren].forEach(item => {
+        // добавляем каждому слайду свой класс и позицию
+        [...sliderChildren].forEach((item, i) => {
             item.classList.add('niko-slider__slide');
+            item.style.left = (i * 100) + '%';
+
+            if (i === 0) item.classList.add('niko-slider__slide--active');
         });
 
         // добавляем класс созданному контейнеру
         sliderWrapper.classList.add('niko-slider');
         sliderContainer.classList.add('niko-slider__container');
+
+        const navigation = this.createSliderNav(sliderContainer.children);
+        
+        
 
         // вставляем все слайды в созданный контейнер
         sliderContainer.append(...sliderChildren);
@@ -39,7 +45,7 @@ class NikoSlider {
         this.$slider.append(sliderWrapper);
     }
 
-    createSliderNav() {
+    createSliderNav(slides) {
         const navigation = document.createElement('div');
         const prev = document.createElement('button');
         const next = document.createElement('button');
@@ -50,6 +56,16 @@ class NikoSlider {
 
         prev.textContent = "Prev";
         next.textContent = "Next";
+
+        prev.addEventListener('click', function() {
+            [...slides].forEach((elem, i) => {
+                console.log('ddd');
+            });
+        });
+
+        next.addEventListener('click', function() {
+            
+        });
 
         navigation.append(prev, next);
 
